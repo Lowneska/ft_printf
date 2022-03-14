@@ -9,7 +9,6 @@ int	main()
 	int	*p;
 	p = &a;
 
-	char	*test = "salut";
 	void* p2 = NULL;
 
 	ft_printf("------------------------------        Test 01 : c        ------------------------------\n");
