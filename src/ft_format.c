@@ -1,4 +1,4 @@
-#include"printflib.h"
+#include "libprintf.h"
 
 void    ft_putchar(char c)
 {
@@ -7,13 +7,10 @@ void    ft_putchar(char c)
 
 void	ft_putstr(const char *str)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] && *str)
+	while (*str)
 	{
-		write(1, &str[i], 1);
-		i++;
+		ft_putchar(*str);
+		str++;
 	}
 }
 
@@ -41,6 +38,7 @@ void	ft_format_s(va_list vl, int *count)
 	if (str == NULL)
 	{
 		ft_putstr("(null)");
+		count += 6;
 	}	
 	else
 	{
@@ -86,9 +84,9 @@ void	ft_format_x(va_list vl, int *count)
 void ft_putnbr_base(char* base, size_t nbr, int	*count, int uns)
 {
 	int length = ft_strlen(base);
-	int nb = (long long)nbr;
-
-	if ((nb < 0) && (!uns))
+	unsigned int nb = (long long)nbr;
+	
+	if ((nbr < 0) && (!uns))
 	{
 		ft_putchar('-');
 		nb *= -1;

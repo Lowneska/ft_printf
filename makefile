@@ -1,6 +1,6 @@
 #Library
 
-NAME = printflib.a
+NAME = libprintf.a
 
 #Files and folders
 
@@ -27,7 +27,7 @@ obj/%.o: src/%.c
 all: $(NAME)
 
 test: ${NAME} main.c
-	@gcc ${FLAGS} -I./lib/ -o main main.c && ./main
+	@gcc ${FLAGS} -I./lib/ -o main main.c libprintf.a && ./main
 
 $(NAME): ${OBJS}
 	@ar rc $(NAME) ${OBJS}

@@ -1,4 +1,4 @@
-#include "printflib.h"
+#include "libprintf.h"
 
 int		ft_printf(const char *format, ...)
 {
@@ -9,12 +9,13 @@ int		ft_printf(const char *format, ...)
     str = (char *)format;
     count = 0;
     va_start(vl, format);
-    if (*str)
+    while (*str)
     {
         if (*str  == '%')
         {
             str++;
             ft_format(*str, vl, &count);
+            str++;
         }
         else
         {

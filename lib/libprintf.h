@@ -1,5 +1,5 @@
-#ifndef PRINTFLIB_H
-#define PRINTFLIB_H
+#ifndef LIBPRINTF_H
+#define LIBPRINTF_H
 
 #include <stdarg.h>
 #include <unistd.h>

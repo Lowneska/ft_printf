@@ -1,5 +1,5 @@
-#include<stdio.h>
-#include "printflib.h"
+#include <stdio.h>
+#include "libprintf.h"
 
 int	main()
 {
@@ -42,4 +42,9 @@ int	main()
 	ft_printf("===================================================================================\n");
 	printf("                                   Vrai printf :   \n" "%d | entier | \n%c | char | \n%s | string \n%x | valeure hexa minuscule | \n%X | valeure hexa majuscule | \n%u | unsigned int | \n ", 341, 'e', "test", 7654, 7654, (unsigned int)4134167265 );
 	ft_printf("-----------      Si tous les résultats sont identiques, c'est bon.      -----------\n");
+
+
+/* A faire 
+	- unsigned
+	- pointeurs
 }
