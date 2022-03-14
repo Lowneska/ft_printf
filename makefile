@@ -4,10 +4,12 @@ NAME = libprintf.a
 
 #Files and folders
 
-SRCS =	src/ft_format.c				\
+SRCS =	src/ft_functions.c				\
+		src/ft_format.c				\
 		src/ft_printf.c
 
-OBJS = obj/ft_format.o				\
+OBJS = obj/ft_functions.o				\
+		obj/ft_format.o				\
 		obj/ft_printf.o
 
 #Compiler options 

@@ -10,6 +10,7 @@ void	ft_putnbr_base(char* base, size_t nbr, int	*count, int uns);
 int		ft_strlen(const char *s);
 void	ft_format_c(va_list vl, int *count);
 void	ft_format_s(va_list vl, int *count);
+void	ft_format_p(va_list vl, int	*count);
 void	ft_format_i_or_d(va_list vl, int *count);
 void	ft_format_u(va_list vl, int *count);
 void	ft_format_x(va_list vl, int *count);

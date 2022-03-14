@@ -28,14 +28,14 @@ int		ft_printf(const char *format, ...)
     return (count);
 }
 
-void    ft_format(char str, va_list vl, int * count)
+void    ft_format(char str, va_list vl, int* count)
 {
     if (str == 'c')
 		ft_format_c(vl, count);
 	else if (str == 's')
 		ft_format_s(vl, count);
-	/*else if (str == 'p')
-		ft_format_p(vl, count);*/
+	else if (str == 'p')
+		ft_format_p(vl, count);
 	else if (str == 'd' || str == 'i')
 		ft_format_i_or_d(vl, count);
 	else if (str == 'u')
@@ -47,6 +47,6 @@ void    ft_format(char str, va_list vl, int * count)
 	else if (str == '%')
     {
 		ft_putchar('%');
-        count++;
+        *count += 1;
     }
 }

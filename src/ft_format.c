@@ -1,33 +1,10 @@
 #include "libprintf.h"
 
-void    ft_putchar(char c)
-{
-    write(1, &c, 1);
-}
-
-void	ft_putstr(const char *str)
-{
-	while (*str)
-	{
-		ft_putchar(*str);
-		str++;
-	}
-}
-
-int	ft_strlen(const char *s)
-{
-	int i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
 //Character 
 void	ft_format_c(va_list vl, int *count)
 {
 	ft_putchar((char)va_arg(vl, int));
-    count++;
+    *count += 1;
 }
 
 void	ft_format_s(va_list vl, int *count)
@@ -38,21 +15,33 @@ void	ft_format_s(va_list vl, int *count)
 	if (str == NULL)
 	{
 		ft_putstr("(null)");
-		count += 6;
+		*count += 6;
 	}	
 	else
 	{
 		ft_putstr(str);
-		count += ft_strlen(str);
+		*count += ft_strlen(str);
 	}
 }
- //A faire 
-/*void	ft_format_p(va_list vl, int *count)
+//Pointer adress
+void	ft_format_p(va_list vl, int *count)
 {
-	size_t	pointer;
+	void*	adress;
 
-	pointer = va_arg(vl, size_t);
-}*/
+	adress = va_arg(vl, void*);
+	if (adress == NULL)
+	{
+		ft_putstr("(nil)");
+		*count += 5;
+	}
+	else
+	{
+		ft_putstr("0x");
+		*count += 2;
+		ft_putnbr_base("0123456789abcdef", (size_t)adress, count, 1);
+	}
+
+}
 
 // i and d format behave the same in printf
 void	ft_format_i_or_d(va_list vl, int *count)
@@ -63,7 +52,7 @@ void	ft_format_i_or_d(va_list vl, int *count)
 
 	ft_putnbr_base("0123456789", integer, count, 0);
 }
-
+//unsigned int
 void	ft_format_u(va_list vl, int *count)
 {
 	unsigned int	nb;
@@ -72,7 +61,7 @@ void	ft_format_u(va_list vl, int *count)
 
 	ft_putnbr_base("0123456789", nb, count, 1);
 }
-
+//Hexadecimal
 void	ft_format_x(va_list vl, int *count)
 {
 	size_t	nb;
@@ -81,22 +70,6 @@ void	ft_format_x(va_list vl, int *count)
 	ft_putnbr_base("0123456789abcdef", nb, count, 1);
 }
 
-void ft_putnbr_base(char* base, size_t nbr, int	*count, int uns)
-{
-	int length = ft_strlen(base);
-	unsigned int nb = (long long)nbr;
-	
-	if ((nbr < 0) && (!uns))
-	{
-		ft_putchar('-');
-		nb *= -1;
-	}
-
-	if (nb > length)
-		ft_putnbr_base(base, nb/length, count, uns);
-	ft_putchar(base[nb % length]);
-	count++;
-}
 void	ft_format_X(va_list vl, int *count)
 {
 	size_t	nb;
